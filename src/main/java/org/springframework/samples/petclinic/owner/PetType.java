@@ -15,10 +15,8 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import jakarta.persistence.*;
 import org.springframework.samples.petclinic.model.NamedEntity;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 /**
  * @author Juergen Hoeller Can be Cat, Dog, Hamster...
@@ -27,4 +25,16 @@ import jakarta.persistence.Table;
 @Table(name = "types")
 public class PetType extends NamedEntity {
 
+
+      String name;
+
+      @Override
+      public String getName() {
+            return name;
+      }
+
+      @Override
+      public void setName(String name) {
+            this.name = name;
+      }
 }
