@@ -1,12 +1,4 @@
 
-Shadab Khan <Shadab.Khan@synechron.com>	Fri, Sep 12, 2025 at 10:25 AM
-To: "khanshadab0756@gmail.com" <khanshadab0756@gmail.com>
-
-Practice***
-========
-
-PetController
-=============
 /*
  * Copyright 2012-2025 the original author or authors.
  *
@@ -166,6 +158,7 @@ return this.petRepository.findByName(name);
 }
 
 @PostMapping("/pet")
+@ResponseBody
 public ResponseEntity<String> pet(@RequestBody PetType type){
 this.types.save(type);
 
