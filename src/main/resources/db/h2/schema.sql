@@ -49,7 +49,10 @@ CREATE TABLE pets (
   birth_date DATE,
   type_id    INTEGER NOT NULL,
   owner_id   INTEGER
+  weight     INTEGER,
+  pet_length INTEGER
 );
+
 ALTER TABLE pets ADD CONSTRAINT fk_pets_owners FOREIGN KEY (owner_id) REFERENCES owners (id);
 ALTER TABLE pets ADD CONSTRAINT fk_pets_types FOREIGN KEY (type_id) REFERENCES types (id);
 CREATE INDEX pets_name ON pets (name);
