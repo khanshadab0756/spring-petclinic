@@ -1,3 +1,5 @@
+
+
 /*
  * Copyright 2012-2025 the original author or authors.
  *
@@ -45,41 +47,63 @@ import jakarta.persistence.Table;
 @Table(name = "pets")
 public class Pet extends NamedEntity {
 
-	@Column(name = "birth_date")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate birthDate;
+      @Column(name = "birth_date")
+      @DateTimeFormat(pattern = "yyyy-MM-dd")
+      private LocalDate birthDate;
 
-	@ManyToOne
-	@JoinColumn(name = "type_id")
-	private PetType type;
+      @ManyToOne
+      @JoinColumn(name = "type_id")
+      private PetType type;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "pet_id")
-	@OrderBy("date ASC")
-	private final Set<Visit> visits = new LinkedHashSet<>();
+      @Column(name = "pet_length")
+      private int length;
 
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
-	}
+      @Column(name = "weight")
+      private double weight;
 
-	public LocalDate getBirthDate() {
-		return this.birthDate;
-	}
 
-	public PetType getType() {
-		return this.type;
-	}
+      @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+      @JoinColumn(name = "pet_id")
+      @OrderBy("date ASC")
+      private final Set<Visit> visits = new LinkedHashSet<>();
 
-	public void setType(PetType type) {
-		this.type = type;
-	}
+      public void setBirthDate(LocalDate birthDate) {
+            this.birthDate = birthDate;
+      }
 
-	public Collection<Visit> getVisits() {
-		return this.visits;
-	}
+      public LocalDate getBirthDate() {
+            return this.birthDate;
+      }
 
-	public void addVisit(Visit visit) {
-		getVisits().add(visit);
-	}
+      public PetType getType() {
+            return this.type;
+      }
 
+      public void setType(PetType type) {
+            this.type = type;
+      }
+
+      public Collection<Visit> getVisits() {
+            return this.visits;
+      }
+
+      public void addVisit(Visit visit) {
+            getVisits().add(visit);
+      }
+
+      public int getLength() {
+            return length;
+      }
+
+      public void setLength(int length) {
+            this.length = length;
+      }
+
+      public double getWeight() {
+            return weight;
+      }
+
+      public void setWeight(double weight) {
+            this.weight = weight;
+      }
 }
