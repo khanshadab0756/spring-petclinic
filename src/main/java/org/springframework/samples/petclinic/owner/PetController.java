@@ -135,35 +135,10 @@ public ResponseEntity<List<Pet>> pets() {
 return new ResponseEntity<>(this.petRepository.findAll(), HttpStatus.OK);
 }
 
-@GetMapping("/pets-type")
-@ResponseBody
-public ResponseEntity<List<PetType>> petsTypes() {
-List<PetType> petTypes = this.types.findAll();
-
-return new ResponseEntity<>(petTypes,HttpStatus.OK);
-}
-
-@GetMapping("/pets-type/{name}")
-@ResponseBody
-public ResponseEntity<PetType> petsTypes(@PathVariable String name) {
-PetType petType = this.types.findPetTypesByName(name);
-
-return new ResponseEntity<>(petType,HttpStatus.OK);
-}
-
 @GetMapping("/pet/{name}")
 @ResponseBody
 public Pet pets(@PathVariable String name) {
 return this.petRepository.findByName(name);
-}
-
-@PostMapping("/pet")
-@ResponseBody
-public ResponseEntity<String> pet(@RequestBody PetType type){
-this.types.save(type);
-
-return new ResponseEntity<>(HttpStatus.CREATED);
-
 }
 
 @PostMapping("/pets/{petId}/edit")
